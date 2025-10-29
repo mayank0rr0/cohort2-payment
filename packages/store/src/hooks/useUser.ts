@@ -8,7 +8,7 @@ export interface UserState {
   }
 }
 
-export const useUser = create((set) => ({
+export const useUser = create<UserState>((set) => ({
   user: {
     name: "Master",
     email: "master@mail.com",
