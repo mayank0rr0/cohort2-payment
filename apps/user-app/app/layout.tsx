@@ -28,8 +28,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider>
-          <AppBarCliemt />
-          {children}
+          <div className="flex flex-col h-screen w-full">
+            <AppBarCliemt />
+            <div className="flex flex-row h-full"> 
+              <div className="w-full">
+                {children}
+              </div>
+            </div>
+          </div>
         </Provider>
       </body>
     </html>
