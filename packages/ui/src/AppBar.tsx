@@ -9,8 +9,8 @@ interface AppbarProps {
 }
 
 const AppBar = ({user, onSignin, onSignout} : AppbarProps) => {
-    return <div className="ui:flex ui:justify-between ui:py-4 ui:px-5 ui:border-b-2 ui:border-gray-500 ui:shadow ">
-        <div className="ui:text-2xl">
+    return <div className="flex justify-between py-4 px-5 border-b-2 border-gray-500 shadow ">
+        <div className="text-2xl">
             Payment2
         </div>
         <div className="">

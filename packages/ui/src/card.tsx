@@ -1,27 +1,10 @@
-import { type JSX } from "react";
+import { JSX } from "react"
 
-export function Card({
-  className,
-  title,
-  children,
-  href,
-}: {
-  className?: string;
-  title: string;
-  children: React.ReactNode;
-  href: string;
-}): JSX.Element {
-  return (
-    <a
-      className={className}
-      href={`${href}?utm_source=create-turbo&utm_medium=basic&utm_campaign=create-turbo"`}
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      <h2>
-        {title} <span>-&gt;</span>
-      </h2>
-      <p>{children}</p>
-    </a>
-  );
+
+export const Card = ({children}: {children : React.ReactNode}) : JSX.Element => {
+  return <div className="flex-col flex justify-center py-8 px-6 bg-white m-4 border-2 rounded-lg min-h-14 border-slate-300">
+    <div className="">
+      {children}
+    </div>  
+  </div>
 }
