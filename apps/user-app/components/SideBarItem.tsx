@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
 interface SideBarItemProps {
@@ -8,10 +11,16 @@ interface SideBarItemProps {
 }
 
 export const SideBarItem = ( { name, page, icon } : SideBarItemProps ) => {
+    const path = usePathname();
+    let cssClasses = "text-slate-700"
 
-    return <div className="my-2">
+    if (path == page) {
+        cssClasses = "text-pink-700"
+    }
+
+    return <div className={"my-2 hover:text-shadow hover:text-pink-600 text-shadow-pink-500 " + cssClasses}>
         <Link href={page}>
-            <div className="flex font-medium hover:text-shadow-xs text-shadow-pink-500  text-pink-700">
+            <div className="flex font-medium">
                 <div className="pr-2">
                     {icon}
                 </div>

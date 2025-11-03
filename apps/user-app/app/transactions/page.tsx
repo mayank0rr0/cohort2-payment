@@ -1,8 +1,8 @@
-
+import { PageHead } from "@repo/ui/PageHead"
 
 export default function Tnx() {
 
   return <div>
-    transaction Page
+    <PageHead name="Transactions" />
   </div>
 }
