@@ -71,21 +71,22 @@ export const authOptions : AuthOptions = {
         // fix the type
         async session({ token, session } : { token : JWT, session : Session}) {
             
-            if (token.sub) {
-                return {
-                    ...session,
-                    user: {
-                        ...session.user,
-                        id: token.sub,
-                    },
-                };
+            // if (token.sub) {
+            //     return {
+            //         ...session,
+            //         user: {
+            //             ...session.user,
+            //             id: token.sub,
+            //         },
+            //     };
+            // }
+
+            if (token.sub && session.user) {
+                session.user.id = token.sub
             }
 
             return session
 
-            // if (token.sub) {
-            //     session.user.id = token.sub
-            // }
         }
     }
 }
