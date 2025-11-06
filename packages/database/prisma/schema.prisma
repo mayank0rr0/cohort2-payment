@@ -1,48 +1,48 @@
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DIRECT_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id                  String                @id @default(uuid())
-  email               String?               @unique
-  name                String?
-  number              String                @unique
-  password            String
-  OnRampTransaction   OnRampTransaction[]
-  Balance             Balance[]
+  id                String              @id @default(uuid())
+  email             String?             @unique
+  name              String?
+  number            String              @unique
+  password          String
+  Balance           Balance[]
+  OnRampTransaction OnRampTransaction[]
 }
 
 model Merchant {
-  id          String    @id @default(uuid())
-  email       String    @unique
-  name        String?
-  auth_type   AuthType
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  auth_type AuthType
 }
 
 model OnRampTransaction {
-  id          String          @id @default(uuid())
-  status      OnRampStatus
-  token       String          @unique
-  provider    String
-  amount      Int
-  startTime   DateTime
-  userId      String
-  user        User            @relation(fields: [userId], references: [id])
+  id        String       @id @default(uuid())
+  status    OnRampStatus
+  token     String       @unique
+  provider  String
+  amount    Int
+  startTime DateTime
+  userId    String
+  user      User         @relation(fields: [userId], references: [id])
 }
 
 model Balance {
-  id          String    @id @default(uuid())
-  userId      String
-  amount      Int
-  locked      Int
-  user        User      @relation(fields: [userId], references: [id])
+  id     String @id @default(uuid())
+  userId String
+  amount Int
+  locked Int
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 enum AuthType {
