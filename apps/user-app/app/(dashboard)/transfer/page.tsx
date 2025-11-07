@@ -1,6 +1,6 @@
-import { AddMoneyCard } from "../../components/AddMoneyComponent";
-import { BalanceCard } from "../../components/BalanceComponent";
-import { OnRampCard } from "../../components/OnRampTransaction";
+import { AddMoneyCard } from "../../../components/AddMoneyComponent";
+import { BalanceCard } from "../../../components/BalanceComponent";
+import { OnRampCard } from "../../../components/OnRampTransaction";
 import { PageHead } from "@repo/ui/PageHead"
 
 export default async function Transfer() {

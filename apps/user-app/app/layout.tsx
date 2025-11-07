@@ -4,6 +4,10 @@ import "./globals.css";
 import '@repo/ui/styles.css';
 import { Provider } from "../providers";
 import { AppBarCliemt } from "../AppBarClient";
+import { StateProvider } from "../components/StateProvider";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../lib/auth";
+import { getUser } from "../lib/getUser";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,23 +23,28 @@ export const metadata: Metadata = {
   description: "Simple wallet app",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(authOptions);
+  const userData = await getUser(session?.user.id ?? '');
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider>
-          <div className="flex flex-col h-screen w-full">
-            <AppBarCliemt />
-            <div className="flex flex-row h-full"> 
-              <div className="w-full">
-                {children}
+          <StateProvider balance={userData?.Balance[0] ?? null} transactions={userData?.OnRampTransaction ?? null}>
+            <div className="flex flex-col h-screen w-full">
+              <AppBarCliemt />
+              <div className="flex flex-row h-full"> 
+                <div className="w-full">
+                  {children}
+                </div>
               </div>
             </div>
-          </div>
+          </StateProvider>
         </Provider>
       </body>
     </html>
