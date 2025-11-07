@@ -1,17 +1,19 @@
 import { create } from "zustand";
 
+interface ProviderOptionType {
+    name: string,
+    url : string
+}
+
 export interface useTransferState {
-    options : {
-        name: string,
-        url : string
-    }[];
+    options : ProviderOptionType[];
     amount : number;
-    selectedUrl : string 
+    selectedProvider : ProviderOptionType 
 }
 
 interface useTransferAction {
     updateAmount : (amount : useTransferState['amount']) => void
-    updateUrl : (selectedUrl : useTransferState['selectedUrl']) => void 
+    updateProvider : (selectedProvider : useTransferState['selectedProvider']) => void 
     init: () => void
 }
 
@@ -23,13 +25,13 @@ export const useTransfer = create<useTransferState & useTransferAction>((set, ge
         }
     ],
     amount: 0,
-    selectedUrl : "",
+    selectedProvider : { name: "", url : ""},
     updateAmount : (amount) => set(() => ({amount: amount})),
-    updateUrl: (selectedUrl) => set(() => ({selectedUrl: selectedUrl})),
+    updateProvider: (selectedProvider) => set(() => ({selectedProvider: selectedProvider})),
     
     // for setting selectedURL oterwise error of options undefined while nextjs renders it on client side
     init: () => set((s) => ({
-        selectedUrl: s.options[0]?.url ?? ""
+        selectedProvider: s.options[0] ?? { name: "", url : ""}
     }))
 }))
 

@@ -6,7 +6,7 @@ interface useTranxState {
         status: "Success" | "Failure" | "Processing",
         token: string,
         provider: string,
-        amount: string,
+        amount: number,
         startTime: Date
     }[]
 }
