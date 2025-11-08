@@ -17,7 +17,7 @@ interface useTransferAction {
     init: () => void
 }
 
-export const useTransfer = create<useTransferState & useTransferAction>((set, get) => ({
+export const useTransfer = create<useTransferState & useTransferAction>((set) => ({
     options : [
         {
             name : "HDFC Bank",
