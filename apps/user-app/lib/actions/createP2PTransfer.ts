@@ -1,11 +1,11 @@
- /// FILLL this up
-
+"use server"
 import { prisma } from "@repo/db";
 import type { Balance } from "@repo/db";
 import { getServerSession } from "next-auth";
+import { authOptions } from "../auth";
 
  export default async function createP2PTransaction (amount : string, number: string ) {
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     
     // Getting id from session object for current user / sender
     const from = session?.user.id
@@ -48,15 +48,15 @@ import { getServerSession } from "next-auth";
         // if where: { amount: fromBalance.amount } -- is not used in update balance of "from"
         // this is called Optimistics Concurrency Control
         // an alternative of LOCKING for cross DB usage + moderate concurrency
+        
+        await tx.balance.update({
+            where: {userId : from, amount: fromBalance.amount},
+            data: {amount: {decrement: Number(amount)}}
+        })
 
         await tx.balance.update({
             where: {userId: to.id},
             data: {amount: {increment: Number(amount)}}
-        })
-
-        await tx.balance.update({
-            where: {userId : from, amount: fromBalance.amount},
-            data: {amount: {decrement: Number(amount)}}
         })
 
         await tx.p2pTransfer.create({
@@ -67,6 +67,10 @@ import { getServerSession } from "next-auth";
                 amount: Number(amount)
             }
         })
+
+        return {
+            message : "Transaction Successful"
+        }
     })
 }
  
