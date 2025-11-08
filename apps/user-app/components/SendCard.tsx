@@ -17,8 +17,9 @@ export const SendCard = () => {
                     <Input onChange={setNum} name="Number" fieldType="text" />
                     <Input onChange={setAmount} name="Amount"/>
                     <Center>
-                        <Button onClick={() => {
-                            createP2PTransaction(amount, num)
+                        <Button onClick={async () => {
+                            const data = await createP2PTransaction(amount, num);
+                            alert(data?.message)
                         }}>
                             Send
                         </Button>

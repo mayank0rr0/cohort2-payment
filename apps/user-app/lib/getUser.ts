@@ -12,6 +12,34 @@ export const getUser = async (id : string) => {
                 }
             }, OnRampTransaction: true}
         })
-        return data
+
+        const p2p = await prisma.p2pTransfer.findMany({
+            where : {
+                OR : [
+                    { toUserId: id },
+                    { fromUserId: id }
+                ]
+            },
+            select: {
+                id : true,
+                timestamp: true,
+                amount: true,
+                toUserId: true,
+                toUser: {
+                    select : {
+                        name: true,
+                        number: true
+                    }
+                },
+                fromUserId: true,
+                fromUser: {
+                    select : {
+                        name: true,
+                        number: true
+                    }
+                } 
+            }
+        })
+        return {data , p2p}
     }
 }
