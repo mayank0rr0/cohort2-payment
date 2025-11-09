@@ -5,7 +5,7 @@ export const SideBar = () => {
         className="flex flex-col justify-center border-r border-slate-400 w-full
         ">
         <div>
-            <SideBarItem name={"Home"} icon={<HomeIcon />} page={"/"} />
+            <SideBarItem name={"Home"} icon={<HomeIcon />} page={"/dashboard"} />
             <SideBarItem name={"Transfer"} icon={<TransferIcon />} page={"/transfer"} />
             <SideBarItem name={"Transaction"} icon={<TranxIcon />} page={"/transactions"} />
             <SideBarItem name={"P2P Transfer"} icon={<P2PIcon />} page={"/p2p"} />
