@@ -10,8 +10,8 @@ interface AppbarProps {
 
 const AppBar = ({ user, onSignin, onSignout } : AppbarProps) => {
     return <div className="flex justify-between py-4 px-5 border-b-2 border-gray-500 shadow ">
-        <div className="text-2xl">
-            Payment2
+        <div className="text-2xl flex flex-col justify-center">
+            Payment 2
         </div>
         <div className="">
             <Button onClick={ user ? onSignout : onSignin }>{ user ? "Sign Out" : "Sign In"}</Button>
