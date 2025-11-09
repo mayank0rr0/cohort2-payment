@@ -5,12 +5,15 @@ export const getUser = async (id : string) => {
     if (id) {
         const data = await prisma.user.findFirst({
             where: { id : id },
-            select : { Balance : {
+            select : { 
+                name: true,
+                number: true,
+                Balance : {
                 select: {
                 amount: true,
                 locked: true
-                }
-            }, OnRampTransaction: true}
+                }}, 
+                OnRampTransaction: true}
         })
 
         const p2p = await prisma.p2pTransfer.findMany({
@@ -40,6 +43,45 @@ export const getUser = async (id : string) => {
                 } 
             }
         })
-        return {data , p2p}
+
+        
+
+        const list1 = data?.OnRampTransaction.filter(x => x.status == "Success").map((x) => {
+            return {
+                from : {
+                    name: data.name,
+                    num: data.number
+                },
+                to : {
+                    name: x.provider,
+                    num: null
+                },
+                amount : x.amount,
+                time: x.startTime
+            }}
+        ) || [];
+    
+        const list2 = p2p.map(x => { 
+            return {
+                from : {
+                    name: x.fromUser.name,
+                    num: x.fromUser.number
+                },
+                to : {
+                    name: x.toUser.name,
+                    num: x.toUser.number
+                },
+                amount : x.amount,
+                time: x.timestamp
+            }
+        })
+
+        const tranxList = [...list1 , ...list2].sort((a, b) => {
+            if (a.time > b.time) return -1;
+            if (a.time < b.time) return 1;
+            return 0;
+        })
+
+        return {data , p2p, tranxList}
     }
 }
