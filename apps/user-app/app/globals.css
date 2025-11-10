@@ -2,3 +2,17 @@
 @import '@repo/tailwind-config';
 
 
+.noscrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.noscrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+@layer base {
+    :root {
+        background: rgb(240, 240, 240);
+    }
+}
