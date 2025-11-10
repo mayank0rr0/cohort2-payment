@@ -1,9 +1,7 @@
 import { SideBarItem } from "./SideBarItem" 
 
 export const SideBar = () => {
-    return <div 
-        className="flex flex-col justify-center border-r border-slate-400 w-full
-        ">
+    return <div className="flex flex-col w-full justify-center border-r border-slate-400">
         <div>
             <SideBarItem name={"Home"} icon={<HomeIcon />} page={"/dashboard"} />
             <SideBarItem name={"Transfer"} icon={<TransferIcon />} page={"/transfer"} />
