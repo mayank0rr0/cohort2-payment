@@ -10,11 +10,11 @@ export const TranxListCard = ({tranxList } : tranxListProp) => {
 
     return <Card>
     <Title title="Transaction History" ></Title>
-      <div className="w-full pt-2 h-[35vh] overflow-auto noscrollbar scroll-auto">
+      <div className="w-full pt-2 h-[50vh] overflow-auto noscrollbar scroll-auto">
         {/* table starts */}        
         <table className="table-auto w-full h-full">
 
-          <thead className="dark:bg-purple-700 not-dark:bg-pink-700 text-white [border-radius: 10px]">
+          <thead className="dark:bg-purple-700 bg-pink-700 text-white [border-radius: 10px]">
             <tr>
               <th>
                 <div className="p-5">

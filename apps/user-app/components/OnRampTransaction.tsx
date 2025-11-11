@@ -12,7 +12,7 @@ export const OnRampCard = () => {
     return <div>
         <Card>
             <Title title="On Ramp Card" />
-            <div className="h-[20vh] overflow-y-scroll noscrollbar oveflow-x-hidden">
+            <div className="h-[30vh] overflow-y-scroll noscrollbar oveflow-x-hidden">
                 { transactions.length > 0 ? 
                     transactions.map((x) => <div key={x.id}> 
                         <TranxCard amount={x.amount} provider={x.provider} startTime={x.startTime} status={x.status}/> 

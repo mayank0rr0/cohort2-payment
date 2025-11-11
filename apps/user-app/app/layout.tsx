@@ -4,6 +4,7 @@ import "./globals.css";
 import '@repo/ui/styles.css';
 import { Provider } from "../providers";
 import { AppBarCliemt } from "../AppBarClient";
+import { ThemeProvider } from "../components/ThemeProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,10 +27,11 @@ export default async function RootLayout({
 }>) {
 
   return (
-    <html lang="en" className="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable} dark:text-zinc-200`}>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider>
-            <div className="flex flex-col h-screen w-full">
+          <ThemeProvider>
+            <div className="flex flex-col h-full w-full dark:text-zinc-200">
               <AppBarCliemt />
               <div className="flex flex-row h-full"> 
                 <div className="w-full">
@@ -37,6 +39,7 @@ export default async function RootLayout({
                 </div>
               </div>
             </div>
+          </ThemeProvider>
         </Provider>
       </body>
     </html>

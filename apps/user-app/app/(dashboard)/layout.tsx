@@ -22,7 +22,9 @@ export default async function DashboardLayout({children} : DashboardLayoutProps)
                 <SideBar />
             </StateProvider>
         </div> 
-        {children} 
+        <div className="w-full pb-10">
+            {children} 
+        </div>
     </div>
 }
 

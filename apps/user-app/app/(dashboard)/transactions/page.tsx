@@ -23,12 +23,12 @@ export default function Tnx() {
   return <div className="w-full ">
     <PageHead name="Transactions" />
     <div className="px-10">
-      <div className="flex gap-10 pb-10 w-full ">
-          <div className="flex w-1/2 text-center justify-between gap-4 items-center dark:bg-purple-700 not-dark:bg-pink-700 text-3xl dark:text-slate-50 not-dark:text-white font-bold rounded-2xl px-10 font-sans">
+      <div className="flex gap-5 pb-5 w-full ">
+          <div className="flex w-1/2 text-center justify-between gap-4 items-center dark:bg-purple-700 bg-pink-700 text-3xl dark:text-slate-50 not-dark:text-white font-bold rounded-lg px-10 font-sans">
             <span className=" text-xl/relaxed font-light"> Balance: </span> 
             <span> INR {balance} </span>
           </div>
-          <div className="flex w-1/2 text-center justify-between gap-4 items-center border-2 not-dark:border-slate-300 shadow dark:border-zinc-800 not-dark:bg-white dark:bg-zinc-700 text-3xl not-dark:text-pink-700 dark:text-purple-200 font-bold rounded-2xl py-5 px-6 font-sans">
+          <div className="flex w-1/2 text-center justify-between gap-4 items-center border-2 not-dark:border-slate-300 shadow dark:border-zinc-800 not-dark:bg-white dark:bg-zinc-700 text-3xl not-dark:text-pink-700 dark:text-purple-200 font-bold rounded-lg py-5 px-6 font-sans">
             <span className=" text-xl/relaxed font-light"> Search: </span> 
             <input className=" border-2 rounded-full border-pink-700 dark:border-purple-600 text-lg font-normal w-full h-15 p-5 hover:shadow-md focus:shadow-lg outline-none ring-0 " 
               type="text" placeholder="Type here to filter the list" onChange={(e) => {setSearch(e.target.value.toLowerCase().trim())}} />

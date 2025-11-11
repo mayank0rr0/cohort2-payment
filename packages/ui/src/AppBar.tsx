@@ -15,9 +15,9 @@ interface AppbarProps {
 const AppBar = ({ user, onSignin, onSignout, onClick , show } : AppbarProps) => {
 
 
-    return <div className="flex justify-between py-4 px-5 border-b-2 not-dark:border-gray-300 dark:border-zinc-600 shadow ">
+    return <div className="flex dark:none justify-between py-4 px-5 border-b-2 not-dark:border-gray-300 dark:border-zinc-600 shadow ">
         {/* App Name */}
-        <div className="text-3xl flex flex-col justify-center dark:text-purple-400 text-pink-700 font-bold">
+        <div className="text-3xl flex flex-col justify-center dark:text-purple-400 not-dark:text-pink-700 font-bold">
             Payment 2.0
         </div>
 
@@ -33,7 +33,10 @@ const AppBar = ({ user, onSignin, onSignout, onClick , show } : AppbarProps) => 
                         onClick(false)
                     }, 5*1000)
                 }}>
-                {show ? <Button onClick={ user ? onSignout : onSignin }>{ user ? "Sign Out" : "Sign In"}</Button> : <More/>}
+                {show ? <div>
+                    <Button onClick={ user ? onSignout : onSignin }>{ user ? "Sign Out" : "Sign In"}</Button>
+                    
+                </div> : <More/>}
             </div>
         </div> : null}
     </div>
