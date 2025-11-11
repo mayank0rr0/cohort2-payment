@@ -1,0 +1,58 @@
+'use client'
+import { Button } from "@repo/ui/button";
+import { Card } from "@repo/ui/card";
+import { Center } from "@repo/ui/Center";
+import { Input } from "@repo/ui/Input";
+import { Title } from "@repo/ui/Title";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+
+export default function SignUp() {
+    const [num, setNum] = useState('');
+    const [name, setName] = useState('');
+    const [pass, setPass] = useState('');
+    const [email, setEmail] = useState('')
+    const [confirmPass, setConfirmPass] = useState('');
+
+
+    return <div className="h-full">
+        <Center>
+            <Card>
+                <div className="w-120">
+                    <Title title="Sign Up"/>
+                    <div className="flex justify-around w-full gap-5">
+                        <div className="flex flex-col w-full">
+                            <Input name="Name" fieldType="text" onChange={setName} />
+                            <Input name="Number" fieldType="text" onChange={setNum} />
+                            <Input name="Email" fieldType="text" onChange={setEmail} />
+                        </div>
+                        <div className="flex flex-col w-full">
+                            <Input name="Password" fieldType="password" onChange={setPass} />
+                            <Input name="Confirm Password" fieldType="password" onChange={setConfirmPass} />
+                        </div>
+                    </div>
+                    
+                    <div className=" flex justify-center p-5">
+                        <Button onClick={async () => {
+                            if (pass == confirmPass) {
+                                await signIn("credentials", {
+                                    redirect: true,
+                                    callbackUrl: '/dashboard',
+                                    name: name,
+                                    password: pass,
+                                    phone: num,
+                                    email
+                                })
+                            }
+
+                            alert("Password Does Not Match")
+                        }}>
+                            Submit
+                        </Button>
+                    </div>
+
+                </div>
+            </Card>
+        </Center>
+    </div>
+}

@@ -5,6 +5,9 @@ import { JWT } from 'next-auth/jwt';
 import { AuthOptions, Session } from 'next-auth';
 
 export const authOptions : AuthOptions = {
+    pages: {
+        signIn: '/signin',
+    },
     providers: [
         CredentialsProvider({
             name: 'Credentials',
@@ -17,12 +20,20 @@ export const authOptions : AuthOptions = {
                 password : {
                     label : "Password",
                     type: "password"
+                },
+                email: {
+                    label: "Email",
+                    type: "text"
+                },
+                name : {
+                    label: "Name",
+                    string: "text"
                 }
             },
-            async authorize(credentials: { phone: string, password: string} | undefined ) {
+            async authorize(credentials: { phone: string, password: string, email: string, name: string} | undefined ) {
 
                 if (!credentials) {
-                    return null;
+                    throw new Error("MissingCredentials");
                 }
 
                 const hashedPassword = await bcrypt.hash(credentials.password, 10)
@@ -38,7 +49,8 @@ export const authOptions : AuthOptions = {
                         return {
                             id: existingUser.id,
                             name: existingUser.name,
-                            email: existingUser.number
+                            email: existingUser.email,
+                            phone: existingUser.number
                         }
                     }
 
@@ -47,15 +59,23 @@ export const authOptions : AuthOptions = {
                         return {
                             id: existingUser.id,
                             name: existingUser.name,
-                            email: existingUser.number
+                            email: existingUser.email,
+                            phone: existingUser.number
                         }
                     }
                     return null;
                 }
 
+                if (!existingUser && !credentials.name) {
+                    console.log(existingUser, credentials)
+                     throw new Error("UserNotFound");
+                }
+
                 try {
                     const user = await prisma.user.create({
                         data: {
+                            name: credentials.name,
+                            email: credentials.email || undefined,
                             number : credentials.phone,
                             password: hashedPassword
                         }
@@ -64,11 +84,13 @@ export const authOptions : AuthOptions = {
                     return {
                         id: user.id,
                         name: user.name,
-                        email: user.number
+                        email: user.email,
+                        phone: user.number
                     }
                 } catch (e) {
                     console.error(e)
                 }
+                
 
                 return null;
             },
