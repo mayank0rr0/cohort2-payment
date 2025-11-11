@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import '@repo/tailwind-config';
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 .noscrollbar::-webkit-scrollbar {
     display: none;
