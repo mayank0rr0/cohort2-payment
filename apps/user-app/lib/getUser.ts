@@ -49,12 +49,12 @@ export const getUser = async (id : string) => {
         const list1 = data?.OnRampTransaction.filter(x => x.status == "Success").map((x) => {
             return {
                 from : {
-                    name: data.name,
-                    num: data.number
-                },
-                to : {
                     name: x.provider,
                     num: null
+                },
+                to : {
+                    name: data.name,
+                    num: data.number
                 },
                 amount : x.amount,
                 time: x.startTime

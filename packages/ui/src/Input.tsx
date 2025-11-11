@@ -11,7 +11,7 @@ export const Input = ( { name, onChange, fieldType = "number" } : InputProp) => 
 
     return <div className="pt-2 mb-4 w-full">
         <InputTitle name={name} />
-        <input className="m-0 w-full p-2 border border-slate-300 rounded-md " 
+        <input className="m-0 w-full p-2 border dark:border-zinc-200 border-slate-300 rounded-md " 
             type={fieldType} placeholder={name} onChange={(e) => {onChange(e.target.value)}} />
     </div>
 }

@@ -11,12 +11,12 @@ export const BalanceCard = () => {
     const locked = useBalance((s) => s.locked);
     const total = useBalance((s) => s.locked + s.amount); // using selector
 
-    return <div>
+    return <>
         <Card>
             <Title title="Balance List" />
             <TableItem name="Unlocked Balance" value={amount + " INR"}/>
             <TableItem name="Total Locked Balance" value={locked + " INR"}/>
             <TableItem name="Total Balance" value={ total + " INR"}/>
         </Card>
-    </div>
+    </>
 } 

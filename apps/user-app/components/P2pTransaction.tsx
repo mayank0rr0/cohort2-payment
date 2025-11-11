@@ -7,7 +7,7 @@ import { useP2P } from "@repo/store"
 
 export const P2PTxn = () => {
     const session = useSession()
-    const p2pTransfers = useP2P((s) => s.p2pTransfers.reverse())
+    const p2pTransfers = useP2P((s) => s.p2pTransfers).reverse()
 
     return <div className="h-full p-10 pb-20">
             <Title title="Transfer History" />

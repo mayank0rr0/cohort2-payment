@@ -4,10 +4,6 @@ import "./globals.css";
 import '@repo/ui/styles.css';
 import { Provider } from "../providers";
 import { AppBarCliemt } from "../AppBarClient";
-import { StateProvider } from "../components/StateProvider";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../lib/auth";
-import { getUser } from "../lib/getUser";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Payment 2.0",
+  title: "PayMe App",
   description: "Simple wallet app",
 };
 
@@ -28,14 +24,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession(authOptions);
-  const userData = await getUser(session?.user.id ?? '');
 
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className="dark">
+      <body className={`${geistSans.variable} ${geistMono.variable} dark:text-zinc-200`}>
         <Provider>
-          <StateProvider tranxAll={userData?.tranxList ?? []} p2p={userData?.p2p ?? []} balance={userData?.data?.Balance[0] ?? null} transactions={userData?.data?.OnRampTransaction ?? null}>
             <div className="flex flex-col h-screen w-full">
               <AppBarCliemt />
               <div className="flex flex-row h-full"> 
@@ -44,7 +37,6 @@ export default async function RootLayout({
                 </div>
               </div>
             </div>
-          </StateProvider>
         </Provider>
       </body>
     </html>

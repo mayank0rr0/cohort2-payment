@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { Button } from "./button";
-import { More } from "./Icons";
+import { AvatarIcon, More } from "./Icons";
 
 interface AppbarProps {
     user?: {
@@ -15,19 +15,17 @@ interface AppbarProps {
 const AppBar = ({ user, onSignin, onSignout, onClick , show } : AppbarProps) => {
 
 
-    return <div className="flex justify-between py-4 px-5 border-b-2 border-gray-300 shadow ">
+    return <div className="flex justify-between py-4 px-5 border-b-2 not-dark:border-gray-300 dark:border-zinc-600 shadow ">
         {/* App Name */}
-        <div className="text-3xl flex flex-col justify-center text-pink-700 font-bold">
+        <div className="text-3xl flex flex-col justify-center dark:text-purple-400 text-pink-700 font-bold">
             Payment 2.0
         </div>
 
-        <div className="flex">
+        {user?.name ? <div className="flex">
             {/* NAME */}
             <div className="flex flex-row justify-center items-center text-xl px-3"> 
                 Hello, {user?.name ? user.name.split('')[0]?.toUpperCase() + user.name.slice(1) : "Anonymous"} 
-                <div className="rounded-full bg-blue-700 w-15 h-15 text-2xl flex flex-col items-center text-center justify-center font-bold text-white text-shadow-2xs text-shadow-black ml-5">
-                    {(user?.name || "Anonymous").split('')[0]?.toUpperCase()}
-                </div>
+                <AvatarIcon username={user?.name}/>
             </div>
             {/* SignOut Button */}
             <div className="flex flex-col justify-center" onClick={() => onClick(!show)} onMouseLeave={() => {
@@ -37,7 +35,7 @@ const AppBar = ({ user, onSignin, onSignout, onClick , show } : AppbarProps) => 
                 }}>
                 {show ? <Button onClick={ user ? onSignout : onSignin }>{ user ? "Sign Out" : "Sign In"}</Button> : <More/>}
             </div>
-        </div>
+        </div> : null}
     </div>
 }
 

@@ -12,7 +12,6 @@ interface StateProviderType {
     tranxAll: TranxState['tranxList'];
 }
 
-
 export const StateProvider = ( {children, balance, transactions, p2p, tranxAll} : StateProviderType ) => {
     const updateAmount = useBalance((s) => s.updateAmount);
     const amount = useBalance((s) => s.amount);
@@ -40,7 +39,7 @@ export const StateProvider = ( {children, balance, transactions, p2p, tranxAll} 
             updateTranxList(tranxAll)
         }
 
-    }, [balance, transactions, updateAmount, updateLocked, updateTranx, amount, locked, tranx, p2pTransfers, p2p, updateP2P, updateTranxList, tranxList, tranxAll])
+    }, [ balance, transactions, updateAmount, updateLocked, updateTranx, amount, locked, tranx, p2pTransfers, p2p, updateP2P, updateTranxList, tranxList, tranxAll])
 
     return <>
         {children}
