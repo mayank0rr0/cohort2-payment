@@ -1,54 +1,41 @@
 "use client"
-import { useBalance, useTranxList } from "@repo/store"
+import { TranxState, useBalance, useTranxList } from "@repo/store"
 import { PageHead } from "@repo/ui/PageHead"
-import { Title } from "@repo/ui/Title"
-import { Card } from "@repo/ui/card"
+import { TranxListCard } from "../../../components/TranxListCard"
+import { useEffect, useState } from "react"
 
 export default function Tnx() {
-  const tranxList = useTranxList((s) => s.tranxList)
   const balance = useBalance((s) => s.amount)
+  const tranxList = useTranxList((s) => s.tranxList)
+  const [search, setSearch ] = useState('')
+  const [newList, setNewList] = useState< TranxState['tranxList'] | undefined >(undefined) 
 
-  return <div className="w-full">
+  useEffect(() => {
+    console.log(search)
+    const timer = setTimeout(() => {
+    const newList = tranxList.filter((x) => JSON.stringify(x).toLowerCase().includes(search)) 
+    setNewList(newList)
+    }, 1000*1)
+
+    return () => {clearTimeout(timer)}
+  }, [search, tranxList, newList])
+
+  return <div className="w-full ">
     <PageHead name="Transactions" />
     <div className="px-10">
       <div className="flex gap-10 pb-10 w-full ">
-          <div className="flex w-1/2 text-center justify-between gap-4 items-center bg-pink-700 text-3xl text-white font-bold rounded-2xl py-10 px-6 font-sans">
+          <div className="flex w-1/2 text-center justify-between gap-4 items-center dark:bg-purple-700 not-dark:bg-pink-700 text-3xl dark:text-slate-50 not-dark:text-white font-bold rounded-2xl px-10 font-sans">
             <span className=" text-xl/relaxed font-light"> Balance: </span> 
             <span> INR {balance} </span>
           </div>
-      </div>
-
-      <Title title="Transaction History" ></Title>
-      <div className="flex justify-between pl-10 pr-30 py-4">
-        <div>From</div> 
-        <div>To</div> 
-        <div>Amount</div> 
-        <div>Time</div> 
-      </div>
-      <div className="flex justify-center pt-2">
-          <div className="w-full overflow-y-auto pl-[10] pr-[5] h-[40vh] flex flex-col gap-3">
-            {tranxList.map((x,i) => <div key={i} className="">
-              {/* Transfer this into a New Element */}
-              <Card>
-                <div className="flex justify-between">
-                  <div>
-                    {x.from.name ?? x.from.num ?? "-"}
-                  </div>
-                  <div>
-                    {x.to.name ?? x.to.num ?? "-"}
-                  </div>
-                  <div>
-                    INR {x.amount}
-                  </div>
-                  <div>
-                    {x.time.toDateString()}
-                  </div>
-                </div>
-              </Card>
-            </div>
-            )}
+          <div className="flex w-1/2 text-center justify-between gap-4 items-center border-2 not-dark:border-slate-300 shadow dark:border-zinc-800 not-dark:bg-white dark:bg-zinc-700 text-3xl not-dark:text-pink-700 dark:text-purple-200 font-bold rounded-2xl py-5 px-6 font-sans">
+            <span className=" text-xl/relaxed font-light"> Search: </span> 
+            <input className=" border-2 rounded-full border-pink-700 dark:border-purple-600 text-lg font-normal w-full h-15 p-5 hover:shadow-md focus:shadow-lg outline-none ring-0 " 
+              type="text" placeholder="Type here to filter the list" onChange={(e) => {setSearch(e.target.value.toLowerCase().trim())}} />
           </div>
       </div>
+
+      <TranxListCard tranxList={newList || tranxList}/>
     </div>
   </div>
 }

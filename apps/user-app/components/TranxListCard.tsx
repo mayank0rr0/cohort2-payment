@@ -1,43 +1,72 @@
-"use client"
-import { useTranxList } from "@repo/store"
-import { Card } from "@repo/ui/card"
-import { Title } from "@repo/ui/Title"
+import { TranxState } from "@repo/store";
+import { Card } from "@repo/ui/card";
+import { Title } from "@repo/ui/Title";
 
+interface tranxListProp {
+  tranxList: TranxState['tranxList'] | undefined
+}
 
-export const TranxListCard = () => {
-    const tranxList = useTranxList((s) => s.tranxList)
+export const TranxListCard = ({tranxList } : tranxListProp) => {
 
-    return <>
+    return <Card>
     <Title title="Transaction History" ></Title>
-      <div className="flex justify-between px-5 py-4">
-        <div>From</div> 
-        <div>To</div> 
-        <div>Amount</div> 
-        <div>Time</div> 
-      </div>
-      <div className="flex justify-center pt-2">
-          <div className="w-full overflow-y-auto  noscrollbar h-[40vh] flex flex-col gap-3">
-            {tranxList.map((x,i) => <div key={i} className="">
-              {/* Transfer this into a New Element */}
-              <Card>
-                <div className="flex justify-between">
-                  <div>
-                    {x.from.name ?? x.from.num ?? "-"}
-                  </div>
-                  <div>
-                    {x.to.name ?? x.to.num ?? "-"}
-                  </div>
-                  <div>
-                    INR {x.amount}
-                  </div>
-                  <div>
-                    {x.time.toDateString()}
-                  </div>
+      <div className="w-full pt-2 h-[35vh] overflow-auto noscrollbar scroll-auto">
+        {/* table starts */}        
+        <table className="table-auto w-full h-full">
+
+          <thead className="dark:bg-purple-700 not-dark:bg-pink-700 text-white [border-radius: 10px]">
+            <tr>
+              <th>
+                <div className="p-5">
+                  From    
                 </div>
-              </Card>
-            </div>
-            )}
-          </div>
+              </th>
+              <th>
+                <div className="p-5">
+                  To    
+                </div>
+              </th>
+              <th>
+                <div className="p-5">
+                  Amount    
+                </div>
+              </th>
+              <th>
+                <div className="p-5">
+                  Time    
+                </div>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody className="w-full mt-10 h-full">
+            {tranxList ? tranxList.map((x,i) => <tr key={i} className="border-b dark:border-zinc-500 border-slate-300">
+              {/* Transfer this into a New Element */}
+              <td>
+                <div className="h-full p-4 flex justify-center">
+                  { x.from.name ? x.from.name?.split('')[0]?.toUpperCase() + x.from.name?.slice(1) : x.from.num ?? "-"}
+                </div>
+              </td>
+              <td>
+                <div className="h-full p-4 flex justify-center ">
+                  { x.to.name ? x.to.name?.split('')[0]?.toUpperCase() + x.to.name?.slice(1) : x.to.num ?? "-"}
+                </div>
+              </td>
+              <td>
+                <div className="h-full p-4 flex justify-center">
+                  INR {x.amount}
+                </div>
+              </td>
+              <td>
+                <div className="h-full p-4 flex justify-center">
+                  {x.time.toDateString()}
+                </div>
+              </td>
+            </tr>
+            ) : <tr>No Transactions Found</tr>}
+          </tbody>
+        </table>
+      {/* table ends */}
       </div>
-    </>
+    </Card>
 }
