@@ -6,7 +6,7 @@ import { ReactNode } from "react"
 export const ThemeProvider = ({children} : {children : ReactNode}) => {
     const dark = useTheme((s) => s.dark)
     
-    return <div className={dark ? "dark" : "" }>
+    return <div className={dark ? "dark h-full" : "h-full" }>
         {children}
     </div>
 }

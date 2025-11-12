@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import { Button } from "./button";
 import { AvatarIcon, More } from "./Icons";
 
@@ -6,19 +6,21 @@ interface AppbarProps {
     user?: {
         name?: string | null
     },
+    img: ReactNode
     show: boolean
     onClick: Dispatch<SetStateAction<boolean>>
     onSignin: () => void 
     onSignout: () => void 
 }
 
-const AppBar = ({ user, onSignin, onSignout, onClick , show } : AppbarProps) => {
+const AppBar = ({ user, onSignin, onSignout, onClick , show, img } : AppbarProps) => {
 
+    if (window.location.pathname == '/') return null
 
-    return <div className="flex dark:none justify-between py-4 px-5 border-b-2 not-dark:border-gray-300 dark:border-zinc-600 shadow ">
+    return <div className="flex dark:none justify-between px-5 border-b not-dark:border-gray-300 dark:border-zinc-700 shadow ">
         {/* App Name */}
-        <div className="text-3xl flex flex-col justify-center dark:text-purple-400 not-dark:text-pink-700 font-bold">
-            Payment 2.0
+        <div className="flex flex-col justify-center w-50 ">
+            {img}
         </div>
 
         {user?.name ? <div className="flex">
@@ -33,12 +35,9 @@ const AppBar = ({ user, onSignin, onSignout, onClick , show } : AppbarProps) => 
                         onClick(false)
                     }, 5*1000)
                 }}>
-                {show ? <div>
-                    <Button onClick={ user ? onSignout : onSignin }>{ user ? "Sign Out" : "Sign In"}</Button>
-                    
-                </div> : <More/>}
+                {show ?<Button onClick={ user ? onSignout : onSignin }>{ user ? "Sign Out" : "Sign In"}</Button>: <More/>}
             </div>
-        </div> : null}
+        </div> : ( !window.location.pathname.includes('sign') ? <Button onClick={onSignin}> Sign In </Button> : null)}
     </div>
 }
 

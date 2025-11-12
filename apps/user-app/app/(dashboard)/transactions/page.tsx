@@ -28,9 +28,9 @@ export default function Tnx() {
             <span className=" text-xl/relaxed font-light"> Balance: </span> 
             <span> INR {balance} </span>
           </div>
-          <div className="flex w-1/2 text-center justify-between gap-4 items-center border-2 not-dark:border-slate-300 shadow dark:border-zinc-800 not-dark:bg-white dark:bg-zinc-700 text-3xl not-dark:text-pink-700 dark:text-purple-200 font-bold rounded-lg py-5 px-6 font-sans">
-            <span className=" text-xl/relaxed font-light"> Search: </span> 
-            <input className=" border-2 rounded-full border-pink-700 dark:border-purple-600 text-lg font-normal w-full h-15 p-5 hover:shadow-md focus:shadow-lg outline-none ring-0 " 
+          <div className="flex w-1/2 text-center justify-between gap-4 items-center border-2 not-dark:border-slate-300 shadow dark:border-zinc-800 not-dark:bg-white dark:bg-zinc-700 text-3xl not-dark:text-pink-700 dark:text-purple-300 font-bold rounded-lg py-5 px-6 font-sans">
+            <span className=" text-xl/relaxed font-normal"> Search: </span> 
+            <input className=" border-2 rounded-full border-pink-700 dark:border-purple-500 text-lg font-normal w-full h-15 p-5 hover:shadow-md focus:shadow-lg outline-none ring-0 " 
               type="text" placeholder="Type here to filter the list" onChange={(e) => {setSearch(e.target.value.toLowerCase().trim())}} />
           </div>
       </div>

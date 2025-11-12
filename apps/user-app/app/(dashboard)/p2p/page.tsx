@@ -6,16 +6,16 @@ import { P2PTxn } from "../../../components/P2pTransaction";
 export default function P2P() {
     return <div className="w-full h-full">
         <PageHead name="P2P Transfer"/>
-        <div className="flex">
-            <div className="w-1/2 h-[65vh]">
+        <div className="flex w-full">
+            <div className="w-1/3">
                 <Center>
                     <SendCard />
                 </Center>
             </div>
             
-            <div className="w-1/2 h-[70vh] border-l border-slate-400 ">
+            <div className="w-2/3 border-l border-slate-400  dark:border-zinc-600">
                 <P2PTxn />
             </div>
         </div>
-    </div>
+    </div>  
 }

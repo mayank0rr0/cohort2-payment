@@ -27,11 +27,11 @@ export default async function RootLayout({
 }>) {
 
   return (
-    <html lang="en">
+    <html lang="en" >
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider>
           <ThemeProvider>
-            <div className="flex flex-col h-full w-full dark:text-zinc-200">
+            <div className="flex flex-col w-full dark:text-zinc-200">
               <AppBarCliemt />
               <div className="flex flex-row h-full"> 
                 <div className="w-full">

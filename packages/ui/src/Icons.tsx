@@ -19,7 +19,7 @@ export const ReceivedIcon = () => {
 }
 
 export const AvatarIcon = ({username} : {username: string}) => {
-    return <div className="rounded-full dark:bg-purple-600 bg-pink-700 w-15 h-15 text-2xl flex flex-col items-center text-center justify-center font-bold text-white text-shadow-2xs text-shadow-black ml-5">
+    return <div className="rounded-full dark:bg-purple-600 bg-pink-700 w-12 h-12 text-2xl flex flex-col items-center text-center justify-center font-bold text-white text-shadow-2xs text-shadow-black ml-5">
         {(username || "Anonymous").split('')[0]?.toUpperCase()}
     </div>
 }

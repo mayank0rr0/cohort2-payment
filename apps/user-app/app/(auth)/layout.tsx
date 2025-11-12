@@ -14,7 +14,8 @@ export default async function AuthLayout ({children} : AuthLayoutProps) {
         redirect('/dashboard')
     }
 
-    return <>
+    return <div className="h-[86vh]"> 
+    {/* work on height how to fix this */}
         {children}
-    </>
+    </div>
 }

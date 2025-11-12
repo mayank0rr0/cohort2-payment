@@ -9,7 +9,7 @@ export const P2PTxn = () => {
     const session = useSession()
     const p2pTransfers = useP2P((s) => s.p2pTransfers).reverse()
 
-    return <div className="h-full p-5 pb-15">
+    return <div className="h-[69vh] p-5 pb-15 w-full">
             <Title title="Transfer History" />
             <div className="pt-4 flex flex-col gap-4 overflow-y-auto noscrollbar h-full">
                 {p2pTransfers.map((x) => <div key={x.id}>

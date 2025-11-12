@@ -11,7 +11,7 @@ export const SendCard = () => {
     const [num, setNum] = useState('');
     const [amount, setAmount] = useState('');
 
-    return <div className="w-90">
+    return <div className="w-full px-4">
                 <Card>
                     <Title title="Send"/>
                     <Input onChange={setNum} name="Number" fieldType="text" />
