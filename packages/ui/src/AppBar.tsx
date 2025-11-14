@@ -15,9 +15,7 @@ interface AppbarProps {
 
 const AppBar = ({ user, onSignin, onSignout, onClick , show, img } : AppbarProps) => {
 
-    if (window.location.pathname == '/') return null
-
-    return <div className="flex dark:none justify-between px-5 border-b not-dark:border-gray-300 dark:border-zinc-700 shadow ">
+    return <div className="flex  dark:none justify-between px-5 border-b not-dark:border-gray-300 dark:border-zinc-700 shadow ">
         {/* App Name */}
         <div className="flex flex-col justify-center w-50 ">
             {img}
