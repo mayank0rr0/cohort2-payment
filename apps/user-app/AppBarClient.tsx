@@ -8,6 +8,8 @@ export const AppBarCliemt = () => {
     const session = useSession();
     const [show, setShow] = useState(false)
 
+    if (window.location.pathname == '/') return null
+
     return <div>
         <AppBar onClick={setShow} show={show} onSignin={signIn} onSignout={async () => {
             signOut({callbackUrl: "/api/auth/signin"})

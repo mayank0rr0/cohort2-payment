@@ -14,7 +14,7 @@ export const TranxListCard = ({tranxList } : tranxListProp) => {
         {/* table starts */}        
         <table className="table-auto w-full h-full">
 
-          <thead className="dark:bg-purple-700 bg-pink-700 text-white [border-radius: 10px]">
+          <thead className="bg-linear-180 dark:from-purple-700 dark:via-purple-600/70 dark:to-purple-500 via-pink-600/70 from-pink-700 text-white [border-radius: 10px]">
             <tr>
               <th>
                 <div className="p-5">
