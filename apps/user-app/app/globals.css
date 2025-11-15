@@ -3,6 +3,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+
 .noscrollbar::-webkit-scrollbar {
     display: none;
 }
@@ -19,7 +20,7 @@
 }
 
 .dark {
-    background: rgb(38, 38, 38);
+    background: rgb(39, 39, 42);
 }
 
 @keyframes orbit {
@@ -29,4 +30,35 @@
   100% {
     transform: rotate(360deg) translateX(var(--orbitr)) rotate(-360deg);
   }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes slowPulse {
+  0%   { opacity: 0.45; transform: scaleY(1); }
+  50%  { opacity: 0.7; transform: scaleY(1.03); }
+  100% { opacity: 0.45; transform: scaleY(1); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 60px rgba(168, 0, 255, 0.55); }
+  50% { box-shadow: 0 0 90px rgba(168, 0, 255, 0.85); }
+}
+
+.glow-breathe {
+  animation: glowPulse 5s ease-in-out infinite;
+}
+
+
+.slow-pulse {
+  animation: slowPulse 2.6s ease-in infinite;
+}
+
+.circle-hover:hover {
+  box-shadow: 0 0 120px rgba(168, 0, 255, 0.65);
+  transform: scale(1.015);
+  transition: all 0.4s ease;
 }
