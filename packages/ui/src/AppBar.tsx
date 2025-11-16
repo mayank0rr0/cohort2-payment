@@ -15,7 +15,11 @@ interface AppbarProps {
 
 const AppBar = ({ user, onSignin, onSignout, onClick , show, img } : AppbarProps) => {
 
-    return <div className="flex  dark:none justify-between px-5 border-b not-dark:border-gray-300 dark:border-zinc-700 shadow ">
+    return <div className="flex 
+        dark:none justify-between px-5 border-b
+        bg-zinc-900/80 backdrop-blur-xl border-zinc-800 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.4)] 
+        not-dark:border-gray-300 hover:shadow-[0_0_40px_-10px_rgba(128,0,255,0.1)]
+        dark:border-zinc-700 transition-all ease-out">
         {/* App Name */}
         <div className="flex flex-col justify-center w-50 ">
             {img}
@@ -23,7 +27,7 @@ const AppBar = ({ user, onSignin, onSignout, onClick , show, img } : AppbarProps
 
         {user?.name ? <div className="flex">
             {/* NAME */}
-            <div className="flex flex-row justify-center items-center text-xl px-3"> 
+            <div className="flex flex-row justify-center items-center text-purple-300 font-bold text-xl px-3"> 
                 Hello, {user?.name ? user.name.split('')[0]?.toUpperCase() + user.name.slice(1) : "Anonymous"} 
                 <AvatarIcon username={user?.name}/>
             </div>
@@ -35,7 +39,7 @@ const AppBar = ({ user, onSignin, onSignout, onClick , show, img } : AppbarProps
                 }}>
                 {show ?<Button onClick={ user ? onSignout : onSignin }>{ user ? "Sign Out" : "Sign In"}</Button>: <More/>}
             </div>
-        </div> : ( !window.location.pathname.includes('sign') ? <Button onClick={onSignin}> Sign In </Button> : null)}
+        </div> : null}
     </div>
 }
 

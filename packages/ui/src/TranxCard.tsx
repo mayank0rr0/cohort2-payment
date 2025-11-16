@@ -7,7 +7,7 @@ interface TranxCardType {
 }
 
 export const TranxCard = ({amount, status, provider, startTime  } : TranxCardType) => {
-    return <div className="flex justify-between items-center border-b border-slate-300 p-2">
+    return <div className="flex justify-between items-center border-b border-zinc-500 p-2">
         <div className="text-lg">
             INR {amount}
         </div>

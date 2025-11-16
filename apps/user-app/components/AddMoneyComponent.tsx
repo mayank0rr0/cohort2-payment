@@ -8,9 +8,20 @@ import { Button } from "@repo/ui/button"
 import { Center } from "@repo/ui/Center"
 import { useTransfer } from "@repo/store"
 import { createOnRampTransaction } from "../lib/actions/createOnRampTransaction"
+import { useEffect, useState } from "react"
+import { AlertBox } from "@repo/ui/AlertBox"
 
 export const AddMoneyCard = () => {
     const options = useTransfer((s) => s.options);
+    const [message, setMessage] = useState('');
+    const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShow(false)
+        }, 10000);}, [show, message])
+        
+    
 
     // state update functions
     const updateProvider = useTransfer((s) => s.updateProvider);
@@ -25,16 +36,19 @@ export const AddMoneyCard = () => {
     return <div>
         <Card>
             <Title title="Add Money"/>
-            <Input onChange={updateAmount} name="Amount" />
+            <Input onChangeNum={updateAmount} name="Amount" />
             <Select onChange={updateProvider} title="Bank" options={options} />
             <Center>
-                <Button onClick={() => {
-                    createOnRampTransaction(selectedProvider.name, amount)
+                <Button onClick={async () => {
+                    const data = await createOnRampTransaction(selectedProvider.name, amount)
+                    setShow(true)
+                    setMessage(data?.message)
                     // window.location.href = selectedProvider.url
                 }}>
                     Submit  
                 </Button>
             </Center>
         </Card>
+        {show ? <AlertBox message={message} /> : null }
     </div>
 } 

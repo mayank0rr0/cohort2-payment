@@ -1,4 +1,3 @@
-import { Card } from "./card"
 import { ReceivedIcon, SentIcon } from "./Icons"
 
 interface TransferProp {
@@ -23,7 +22,9 @@ interface TransferProp {
 export const TransferCard = ({tranx, id} : TransferProp) => {
     const isSent = (tranx.fromUserId == id) 
 
-    return <Card> 
+    return <div className="rounded-xl border-2 border-white/10 p-5 bg-zinc-900/65 hover:bg-zinc-900/45
+        backdrop-blur-xl 
+    "> 
     <div  className="flex justify-between">
         <div className="flex flex-col justify-between">
             <div className="flex items"> 
@@ -45,7 +46,7 @@ export const TransferCard = ({tranx, id} : TransferProp) => {
             {tranx.timestamp.toDateString()}
         </div>
     </div>
-    </Card>
+    </div>
 }
 
 

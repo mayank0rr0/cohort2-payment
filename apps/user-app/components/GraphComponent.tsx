@@ -18,8 +18,8 @@ export const GraphComponent = () => {
 
     return <div className="w-full">
         <Card >
-        <Title title="Spending Graph"/>
-            <LineChart className="p-5 dark:text-zinc-100"
+            <Title title="Spending Graph"/>
+            <LineChart className="p-5 dark:text-zinc-100 duration-[2.5s]"
             style={{ height: 400, width: '100%', aspectRatio: 1.618, maxWidth: 600 }}
             responsive
             data={tranx}
