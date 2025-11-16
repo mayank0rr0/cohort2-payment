@@ -10,6 +10,10 @@ export const createOnRampTransaction = async ( provider : string, amount: number
                 return {
                         message: "Unauthenticated request"
                 }
+        } else if (amount == 0 ) {
+                return {
+                        message: "No amount given"
+                }
         } else {
                 const token = String(Math.floor(Math.random() * 100000));
                 try {

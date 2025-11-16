@@ -26,9 +26,9 @@ import { authOptions } from "../auth";
         }
     })
     
-    if (!to?.id) {
+    if (!to?.id || to?.id == from) {
         return {
-            message : "Receiver not found"
+            message : "Receiver Not Found or Invalid Receiver"
         }
     }
     

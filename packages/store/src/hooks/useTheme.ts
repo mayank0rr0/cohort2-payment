@@ -9,6 +9,6 @@ interface ThemeAction {
 }
 
 export const useTheme = create<ThemeState & ThemeAction>((set) => ({
-    dark: window.matchMedia("(prefers-color-scheme: dark)").matches,
+    dark: true,
     updateDark: (dark) => set(() => ({dark: dark}))
 }))

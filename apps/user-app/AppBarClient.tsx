@@ -2,15 +2,17 @@
 import AppBar from "@repo/ui/AppBar";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export const AppBarCliemt = () => {
     const session = useSession();
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(false);
+    const pathname = usePathname();
 
-    if (window.location.pathname == '/') return null
+    if ( pathname == '/') return null
 
-    return <div>
+    return <div >
         <AppBar onClick={setShow} show={show} onSignin={signIn} onSignout={async () => {
             signOut({callbackUrl: "/api/auth/signin"})
         }} user={session.data?.user} img={<Logo />} />
