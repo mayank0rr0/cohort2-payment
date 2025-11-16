@@ -6,6 +6,7 @@ import { Input } from "@repo/ui/Input";
 import { Title } from "@repo/ui/Title";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import SubSignHeading from "../../../components/SignSubHeading";
 
 export default function SignUp() {
     const [num, setNum] = useState('');
@@ -15,12 +16,13 @@ export default function SignUp() {
     const [confirmPass, setConfirmPass] = useState('');
 
 
-    return <div className="h-full">
+    return <div className="h-full pt-20 sm:pt-0">
         <Center>
             <Card>
-                <div className="w-120">
+                <div className="w-75 md:w-120!">
                     <Title title="Sign Up"/>
-                    <div className="flex justify-around w-full gap-5">
+                    <SubSignHeading/>
+                    <div className="flex flex-col md:flex-row! justify-around w-full gap-0 md:gap-5!">
                         <div className="flex flex-col w-full">
                             <Input name="Name" fieldType="text" onChange={setName} />
                             <Input name="Number" fieldType="text" onChange={setNum} />

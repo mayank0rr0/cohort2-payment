@@ -7,17 +7,19 @@ import { Title } from "@repo/ui/Title";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import SubSignHeading from "../../../components/SignSubHeading";
 
 export default function SignIn() {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
 
-    return <div className="h-full">
+    return <div className="h-full ">
         <Center>
             <Card>
-                <div className="w-70">
+                <div className="w-70 md:w-80!">
                     <Title title="Sign In"/>
+                    <SubSignHeading />
                     <Input fieldType="text" name="Number" onChange={setPhone}/>
                     <Input fieldType="password" name="Password" onChange={setPassword}/>
                     <div className="flex justify-center pt-4">
