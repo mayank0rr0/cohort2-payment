@@ -4,11 +4,11 @@ import { redirect } from "next/navigation";
 import { Landing } from "../components/Landing";
 
 export default async function Home() {
-  // const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
-  // if (session?.user) {
-  //   redirect('/dashboard')
-  // }
+  if (session?.user) {
+    redirect('/dashboard')
+  }
 
   // OF NO USE THE USER WILL BE REDIRECTED ANYHOW
   return (
