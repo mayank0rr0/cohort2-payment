@@ -19,7 +19,9 @@ export const ReceivedIcon = () => {
 }
 
 export const AvatarIcon = ({username} : {username: string}) => {
-    return <div className="rounded-full dark:bg-purple-600 bg-pink-700 w-12 h-12 text-2xl flex flex-col items-center text-center justify-center font-bold text-white text-shadow-2xs text-shadow-black ml-5">
+    return <div className="hidden rounded-full dark:bg-purple-600 bg-pink-700 
+        w-12 h-12 sm:flex! flex-col items-center text-center justify-center
+        text-2xl font-bold text-white/90 text-shadow-2xs text-shadow-black ml-5">
         {(username || "Anonymous").split('')[0]?.toUpperCase()}
     </div>
 }
@@ -52,7 +54,7 @@ export const P2PIcon = () => {
 }
 
 export const DoubleArrow = () => {
-    return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 self-center top-1 relative dark:text-purple-300">
+    return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 self-center lg:top-1! relative dark:text-purple-300">
         <path fillRule="evenodd" d="M13.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
         <path fillRule="evenodd" d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
     </svg>

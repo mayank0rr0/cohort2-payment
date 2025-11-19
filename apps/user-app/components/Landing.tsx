@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { Toggle } from "./Toggle"
+// import { Toggle } from "./Toggle"
 import { Button } from "@repo/ui/button"
 import { LandingSectionHead } from "@repo/ui/LandingSectionHead"
 import { LandingHead } from "@repo/ui/LandingHead"
@@ -13,7 +13,7 @@ export const Landing = () => {
 
     return <div className="relative z-0 h-full w-full overflow-hidden">
         
-        <div className="sm-fixed -z-100 h-full w-full
+        <div className="fixed -z-100 h-screen w-full
             opacity-30
 
             dark:bg-[radial-gradient(circle_750px_at_85%_2%,var(--color-purple-500),var(--color-purple-600),var(--color-purple-800),var(--color-purple-900),var(--color-zinc-950))] from-[#1a1a1a] via-[#2a0a45] to-[#6a1fbf]
@@ -23,24 +23,24 @@ export const Landing = () => {
         </div>
         
         
-        <div className="min-h-screen ">
+        <div className="min-h-screen">
 
             <div className="h-screen">
             {/* Logo */}
             <LogoAbsolute />
             
             {/* hero section */}
-            <div className="flex flex-col h-full justify-center gap-4 items-center xl:pt-5! px-10">
+            <div className="flex flex-col h-full justify-center gap-4 items-center pt-5 px-10">
                 {/* dashboard */}
-                <div className="px-4 md:px-15! xl:px-35! p-5 md:p-7! xl:pt-10!">
+                <div className="px-4 md:px-25! lg:px-40! p-5 md:p-7! xl:pt-10!">
                     <Image className="dark:hidden rounded-2xl border-3 m-5 shadow-xl shadow-pink-300/75 border-pink-500 p-2 bg-slate-100" src="/images/light-dash.png" alt="logo" width={800} height={500} />
                     <Image className="not-dark:hidden 
                     animate-[float_4s_ease-in-out_infinite]
                     shadow-[0_0_80px_20px_rgba(168,0,255,0.6)]/85 hover:shadow-purple-400/85 hover:shadow-3xl
-                    rounded-2xl border-3 my-2 md:my-5 lg:my-8 hover:border-purple-400  border-purple-400 p-2 bg-zinc-800" src="/images/dark-dash.png" alt="logo" width={800} height={500} />
+                    rounded-2xl border-3 my-2 hover:border-purple-400  border-purple-400 p-2 bg-zinc-800" src="/images/dark-dash.png" alt="logo" width={800} height={500} />
                 </div>
                 {/* Hero Heading */}
-                <div className="flex flex-col items-center gap-2">
+                <div className="flex flex-col items-center">
                     <LandingHead title="A Simple Payment Application" desc="Send money in seconds. Secure, simple, and instant." />
                     
 
@@ -60,9 +60,10 @@ export const Landing = () => {
 
             
             {/* Tech Stack */}
-            <div className="h-screen w-full flex justify-center p-10 lg:p-0! lg:justify-end! relative ">
+            <div className="h-screen w-full flex justify-center p-10 xl:p-0! xl:justify-end! relative ">
+
                 {/* Look at a better way and replace this */}
-                <div className="flex h-full items-center top-0 lg:relative! absolute lg:top-35! lg:left-40!">
+                <div className="flex h-full items-center top-0 xl:relative! absolute xl:top-35! xl:left-40!">
                     <div className="sm:border-2! border-0 opacity-35 animate-pulse delay-300 rounded-full border-pink-400 dark:border-zinc-400 w-250 h-250 flex justify-center items-center">
                         <div className="sm:border-2! border-0 animate-pulse delay-300 rounded-full border-pink-400 dark:border-zinc-400 w-200 h-200 flex justify-center items-center">
                             <div className="border-2 animate-pulse sm:delay-200 delay-300 rounded-full border-pink-400 dark:border-zinc-400 w-160 h-160 flex justify-center items-center">
@@ -78,57 +79,57 @@ export const Landing = () => {
                 </div>
                 
                 {/* improve */}
-                < div className="flex h-full items-center lg:relative! absolute sm:top-0! lg:right-0 -top-17! -right-35 sm:right-10!">
-                    <div className="w-200 h-200 rounded absolute top-85 -left-135">
+                < div className="hidden xl:flex! h-full items-center relative right-0 ">
+                    <div className="w-200 h-200 rounded absolute xl:top-65 xl:-left-145">
                         <Image style={{
-                            animation: 'orbit 1s linear infinite',
+                            animation: 'orbit 15s linear infinite',
                             transformOrigin: "0 0",
                             ["--orbitr" as any] : "50px"  
                         }} className="size-19 absolute top-50 left-50" src="/Node.js_logo.svg" alt="logo" width={10} height={10} />
                     </div>
-                    <div className="w-200 h-200 rounded absolute top-85 -left-135">
+                    <div className="w-200 h-200 rounded absolute xl:top-65 xl:-left-145">
                         <Image style={{
                             animation: 'orbit 20s linear infinite',
                             transformOrigin: "0 0",
                             ["--orbitr" as any] : "150px"  
                         }} className="size-19 absolute top-50 left-50" src="/vercel.svg" alt="logo" width={10} height={10} />
                     </div>
-                    <div className="w-200 h-200 rounded absolute top-85 -left-135">
+                    <div className="w-200 h-200 rounded absolute xl:top-65 xl:-left-145">
                         <Image style={{
                             animation: 'orbit 25s linear infinite',
                             transformOrigin: "0 0",
                             ["--orbitr" as any] : "250px"  
                         }} className="size-19 absolute top-50 left-50" src="/logo_dark.svg" alt="logo" width={10} height={10} />
                     </div>
-                    <div className="w-200 h-200 rounded absolute top-85 -left-135">
+                    <div className="w-200 h-200 rounded absolute xl:top-65 xl:-left-145">
                         <Image style={{
                             animation: 'orbit 30s linear infinite',
                             transformOrigin: "0 0",
                             ["--orbitr" as any] : "300px"  
                         }} className="size-40 absolute top-50 left-50" src="/turborepo-light.svg" alt="logo" width={10} height={10} />
                     </div>
-                    <div className="w-200 h-200 rounded absolute top-85 -left-135">
+                    <div className="w-200 h-200 rounded absolute xl:top-65 xl:-left-145">
                         <Image style={{
                             animation: 'orbit 35s linear infinite',
                             transformOrigin: "0 0",
                             ["--orbitr" as any] : "350px"
                         }} className="size-19 absolute top-50 left-50" src="/Tailwind_CSS_Logo.svg" alt="logo" width={10} height={10} />
                     </div>
-                    <div className="w-200 h-200 rounded absolute  top-85 -left-135">
+                    <div className="w-200 h-200 rounded absolute xl:top-65 xl:-left-145">
                         <Image style={{
-                            animation: 'orbit 40s linear infinite',
+                            animation: 'orbit 45s linear infinite',
                             transformOrigin: "0 0",
                             ["--orbitr" as any] : "400px"
                         }} className="size-25 absolute top-50 left-50" src="/prisma.svg" alt="logo" width={10} height={10} />
                     </div>
-                    <div className="w-200 h-200 rounded absolute  top-85 -left-135">
+                    <div className="w-200 h-200 rounded absolute xl:top-65 xl:-left-145">
                         <Image style={{
-                            animation: 'orbit 45s linear infinite',
+                            animation: 'orbit 50s linear infinite',
                             transformOrigin: "0 0",
                             ["--orbitr" as any] : "450px"
                         }} className="size-20 border border-amber-50 rounded-full absolute top-50 left-50" src="/nextjs.svg" alt="logo" width={10} height={10} />
                     </div>
-                    <div className="w-200 h-200 rounded absolute top-85 -left-135">
+                    <div className="w-200 h-200 rounded absolute xl:top-65 xl:-left-145">
                         <Image style={{
                             animation: 'orbit 55s linear infinite',
                             transformOrigin: "0 0",
@@ -138,7 +139,7 @@ export const Landing = () => {
                 </div>
 
                 {/* text */}
-                <div className="flex flex-col justify-center gap-5 w-full lg:w-2/3! h-full z-10 lg:p-20 absoulte">
+                <div className="flex flex-col justify-center gap-5 w-full lg:w-2/3! h-full z-10 lg:p-20">
 
                         <div className="bg-linear-180 not-dark:from-pink-200 not-dark:via-pink-300/70 not-dark:to-pink-400/70 not-dark:hover:from-pink-700 not-dark:hover:to-pink-500 not-dark:hover:via-pink-600 hover:text-white 
                         dark:from-zinc-800/70 dark:to-zinc-900/80 dark:hover:from-purple-900/70 dark:hover:to-zinc-900/80 
@@ -245,11 +246,12 @@ export const Landing = () => {
                         </div>
                     </div>
                 </div>
+                
             </div>
 
             {/* Features */}
             <div className="h-screen flex flex-col justify-center p-10 md:p-15 lg:p-25">
-                <div className="flex h-full flex-col p-10 md:p-15 lg:p-25 justify-center items-center text-center bg-linear-20  
+                <div className="flex h-full flex-col p-10 md:p-10! lg:p-25! justify-center items-center text-center bg-linear-20  
                 
                     dark:from-purple-800/80 not-dark:from-pink-600 dark:via-purple-950/50 to-zinc-800/50 via-pink-400 rounded-3xl gap-10 z-10
                         
@@ -261,7 +263,7 @@ export const Landing = () => {
                     after:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)]
                 ">
                     <LandingSectionHead title="Features - Simple, Fast, Transparent." desc="Our platform is built to be fast, reliable, and developer-friendly.Here’s what’s inside:" />
-                    <ul className=" text-sm md:text-xl! space-y-6 text-left list-disc">
+                    <ul className=" text-sm md:text-md xl:text-xl! space-y-6 text-left list-disc">
                         <li>
                             <span className="font-2xl font-bold">Instant P2P Transfers -</span> Transfer money instantly and securely between users.
                         </li>
@@ -284,7 +286,7 @@ export const Landing = () => {
             {/* Modern Architechture */}
             <div className="relative h-screen p-10 md:p-15! lg:p-20! flex w-full">
     
-                    <div className="flex absolute left-0 gap-3 w-full h-full overflow-x-hidden">
+                    <div className="flex absolute left-0 gap-1 sm:gap-2! md:gap-3! w-full h-full overflow-x-hidden">
                         { Array.from({length : 25}).map((_, i) => {
                             const h = (Math.floor((Math.random() * 90)))
                             
@@ -325,7 +327,7 @@ export const Landing = () => {
             </div>
 
             {/* Work Flow */}
-            <div className="flex h-screen pt-30 px-40 justify-center lg:justify-end! relative">
+            <div className="flex h-screen pt-15 px-40 justify-center lg:justify-end! relative">
                 
                 <div className="absolute z-10 sm:w-150!         
                     sm:h-150! sm:p-10 w-[90vw] h-150 p-12
@@ -406,8 +408,6 @@ export const Landing = () => {
             <div className="flex justify-center h-10 text-sm items-center text-zinc-400 font-mono px-10">
                 A Project by MAYANK0RR0 - 2025
             </div>
-
-            <Toggle />
         </div>
     </div>
 }

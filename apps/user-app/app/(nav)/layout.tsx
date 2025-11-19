@@ -7,9 +7,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  return <div className="flex flex-col w-full dark:text-zinc-200">
+  return <div className="flex flex-col w-full dark:text-zinc-200 min-h-screen">
     <AppBarCliemt />
-        <div className="flex flex-row h-full"> 
+        <div className="flex flex-row min-h-[85vh]"> 
             <div className="w-full">
                 {children}
             </div>

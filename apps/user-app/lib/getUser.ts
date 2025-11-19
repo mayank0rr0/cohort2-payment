@@ -3,6 +3,7 @@ import { prisma } from "@repo/db";
 
 export const getUser = async (id : string) => {
     if (id) {
+        console.log(await prisma.user.count())
         const data = await prisma.user.findFirst({
             where: { id : id },
             select : { 

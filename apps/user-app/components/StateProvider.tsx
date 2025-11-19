@@ -1,18 +1,17 @@
 "use client"
 
-import { ReactNode, useEffect } from "react"
+import {  useEffect } from "react"
 import { p2pTransferType, TranxState, useBalance, useP2P, useTranx, useTranxList } from "@repo/store";
 import type { OnRampTransaction, Balance } from "@repo/db";
 
 interface StateProviderType {
-    children : ReactNode;
     transactions: OnRampTransaction[] | null;
     balance: Pick<Balance, 'amount' | 'locked'> | null;
     p2p: p2pTransferType[];
     tranxAll: TranxState['tranxList'];
 }
 
-export const StateProvider = ( {children, balance, transactions, p2p, tranxAll} : StateProviderType ) => {
+export const StateProvider = ( { balance, transactions, p2p, tranxAll} : StateProviderType ) => {
     const updateAmount = useBalance((s) => s.updateAmount);
     const amount = useBalance((s) => s.amount);
     const updateLocked = useBalance((s) => s.updateLocked)
@@ -42,6 +41,6 @@ export const StateProvider = ( {children, balance, transactions, p2p, tranxAll} 
     }, [ balance, transactions, updateAmount, updateLocked, updateTranx, amount, locked, tranx, p2pTransfers, p2p, updateP2P, updateTranxList, tranxList, tranxAll])
 
     return <>
-        {children}
+        {null}
     </>
 }
