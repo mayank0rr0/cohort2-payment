@@ -51,7 +51,7 @@ export default function Tnx() {
             font-bold p-5 lg:p-7! font-sans">
             <span className=" text-xl/relaxed font-normal"> Search: </span> 
             <input className=" border-2 rounded-full 
-            border-pink-700 dark:border-purple-300 text-lg dark:text-purple-300 
+            not-dark:border-pink-700 dark:border-purple-300 text-lg dark:text-purple-300 
               font-normal w-full h-15 p-5 hover:shadow-md focus:shadow-lg outline-none ring-0 hover:ring-2 backdrop-blur-xl bg-white/2" 
               type="text" placeholder="Type here to filter the list" onChange={(e) => {setSearch(e.target.value.toLowerCase().trim())}} />
           </div>
