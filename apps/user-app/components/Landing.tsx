@@ -64,8 +64,8 @@ export const Landing = () => {
 
                 {/* Look at a better way and replace this */}
                 <div className="flex h-full items-center top-0 xl:relative! absolute xl:top-35! xl:left-40!">
-                    <div className="sm:border-2! border-0 opacity-35 animate-pulse delay-300 rounded-full border-pink-400 dark:border-zinc-400 w-250 h-250 flex justify-center items-center">
-                        <div className="sm:border-2! border-0 animate-pulse delay-300 rounded-full border-pink-400 dark:border-zinc-400 w-200 h-200 flex justify-center items-center">
+                    <div className="xl:border-2! border-0 opacity-35 animate-pulse delay-300 rounded-full border-pink-400 dark:border-zinc-400 w-250 h-250 flex justify-center items-center">
+                        <div className="xl:border-2! border-0 animate-pulse delay-300 rounded-full border-pink-400 dark:border-zinc-400 w-200 h-200 flex justify-center items-center">
                             <div className="border-2 animate-pulse sm:delay-200 delay-300 rounded-full border-pink-400 dark:border-zinc-400 w-160 h-160 flex justify-center items-center">
                                 <div className="border-2 animate-pulse sm:delay-150 delay-300 rounded-full border-pink-400 dark:border-zinc-400 w-120 h-120 flex justify-center items-center">
                                     <div className="border-2 animate-pulse delay-100 rounded-full border-pink-400 dark:border-zinc-400 w-80 h-80 flex justify-center items-center">
