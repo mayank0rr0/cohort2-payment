@@ -1,9 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import '@repo/ui/styles.css';
 import { Provider } from "../providers";
 import { ThemeProvider } from "../components/ThemeProvider";
+
+export const viewport : Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" }
+  ],
+  colorScheme: "dark"
+}
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,10 +25,6 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Simple Payment",
   description: "A simple wallet app",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#000000" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
 };
 
 export default async function RootLayout({
